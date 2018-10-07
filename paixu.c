@@ -76,7 +76,81 @@ void BubbleSort(int buf[],int n){//冒泡排序
 	sleep(10);
 	endwin();//关闭图形窗口            
 }
-void SimpleSelection(int buf[],int n){
+void SimpleSelection(int buf[],int n){//简单选择排序
+	initscr();
+    	refresh();
+    	move(2, 5);
+    	for(int b=0;b<=n;b++){
+    		printw("%d", buf[b]);//在图形窗口输出字符串
+    		printw(" ");
+    	}
+    	refresh();
+    	sleep(1);
+	int i = 0;             
+        while (i <= n ){
+		int k = i;
+		int j = i + 1;
+      		while (j <= n ){
+			if (buf[j] < buf[k]) k = j;
+    			j+=2;
+		}
+		if (k != i){
+    			clear();
+    			move(2, 5);
+    			int m=0;
+    			int d=i+1;
+    			int a=k+1;
+    			while(m<i){
+				printw("%d", buf[m]);
+				printw(" ");
+				m++;
+    			}
+    			attron(A_UNDERLINE);
+    			printw("%d", buf[i]);
+    			attroff(A_UNDERLINE);
+    			printw(" ");
+    			while(d<k){
+				printw("%d", buf[d]);
+				printw(" ");
+				d++;
+    			}
+    			attron(A_UNDERLINE);
+    			printw("%d", buf[k]);
+    			attroff(A_UNDERLINE);
+    			printw(" ");
+    			while(a<=n){
+				printw("%d", buf[a]);
+				printw(" ");
+				a++;
+    			}
+    			refresh();
+    			sleep(1);
+    			int t = buf[i];
+    			buf[i] = buf[k];
+    			buf[k] = t;
+		}
+		clear();             
+                move(2, 5);
+    		for(int s=0;s<=n;s++){
+	 		printw("%d", buf[s]);//在图形窗口输出字符串
+	 		printw(" ");
+    		}
+    		refresh();
+    		sleep(1);
+   		i++;
+	}
+    	move(2, 5);
+    	for(int q=0;q<=n;q++){
+    		printw("%d", buf[q]);//在图形窗口输出字符串
+    		printw(" ");
+    	}
+    	refresh();
+    	sleep(1);
+	move(5,5);
+    	printw(" Simple Selection Sort, Sort success\n");
+	refresh();
+    	sleep(2);
+    	endwin();   
 }
 void StraightInsertion(int buf[],int n){
 }
