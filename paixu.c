@@ -152,7 +152,64 @@ void SimpleSelection(int buf[],int n){//简单选择排序
     	sleep(2);
     	endwin();   
 }
-void StraightInsertion(int buf[],int n){
+void StraightInsertion(int buf[],int n){//直接插入排序
+	initscr();
+    	refresh();
+    	move(2, 5);
+    	for(int b=0;b<=n;b++){
+    		printw("%d", buf[b]);//在图形窗口输出字符串
+    		printw(" ");
+    	}
+    	refresh();
+    	sleep(1);
+    	int i=1;  
+        while(i<=n){
+		if(buf[i]<buf[i-1]){
+	    		int t;
+	    		t=buf[i];
+	    		buf[i]=buf[i-1];
+	    		int j=i-2;
+	    		while(t<buf[j]&&j>=0){
+				buf[j+1]=buf[j]; 
+				j--;
+	    		}
+	    		buf[j+1]=t;
+		}
+		clear();
+		move(2, 5);
+		int k=0;
+		int m=i+1;
+		while(k<i){
+	    		printw("%d", buf[k]);
+	    		printw(" ");
+	    		k++;
+		}
+		
+		attron(A_UNDERLINE);
+        printw("%d", buf[i]);
+		attroff(A_UNDERLINE);
+		printw(" ");
+		while(m<=n){
+	    		printw("%d", buf[m]);
+                printw(" ");
+	    		m++;
+		}
+		refresh();
+		sleep(1);
+		i++;
+    	}
+    	move(2, 5);
+    	for(int q=0;q<=n;q++){
+    		printw("%d", buf[q]);//在图形窗口输出字符串
+    		printw(" ");
+    	}
+    	refresh();
+    	sleep(1);
+    	move(5,5);
+    	printw(" Straight Insertion Sort, Sort success\n"); 
+    	refresh();
+    	sleep(2);
+    	endwin(); 
 }
 void SequentialSearch(int a,int buf[],int n){
 }
