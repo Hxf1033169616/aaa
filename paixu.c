@@ -211,7 +211,59 @@ void StraightInsertion(int buf[],int n){//直接插入排序
     	sleep(2);
     	endwin(); 
 }
-void SequentialSearch(int a,int buf[],int n){
+void SequentialSearch(int a,int buf[],int n){//顺序查找
+	initscr();
+	move(2, 5);
+	for(int q=0;q<=n;q++){
+    		printw("%d", buf[q]);//在图形窗口输出字符串    
+		printw(" ");
+    	}    
+	refresh();
+        sleep(1);
+	int i = 0;
+	int j=0;
+        int t=5;
+	while (i <= n){
+		clear();
+		move(2, 5);
+		for(int b=0;b<=n;b++){
+			printw("%d", buf[b]);//在图形窗口输出字符串
+			printw(" ");
+		}
+		int k=0;
+		int r=buf[i];
+		while(r>0){
+			r=r/10;
+			k++;
+		}
+		if(i==0){
+			move(1, 5);
+			t=t+k+1;
+		}else{
+			move(1, t);
+			t=t+k+1;
+		}
+		printw("%d", a);
+		refresh();
+		sleep(1);
+		if (buf[i]==a){
+			j=1;
+			move(5, 5);
+			printw( "Sequential Search,Find success\n");
+			refresh();
+			sleep(5);
+			break;
+		}
+		i+=1;
+	}
+	if(j==0){
+		move(5, 5);
+		printw( "Sequential Search,Find failure\n");
+		refresh();
+		sleep(1);
+	}       		
+	sleep(2);
+	endwin();   
 }
 void BinarySearch(int a,int buf[],int n){
 }
