@@ -265,7 +265,75 @@ void SequentialSearch(int a,int buf[],int n){//顺序查找
 	sleep(2);
 	endwin();   
 }
-void BinarySearch(int a,int buf[],int n){
+void BinarySearch(int a,int buf[],int n){//折半查找
+    printf("The following is a Binary Search,please confirm whether it has been orderd?[Y/n]");//这个数组是否已经排序，若没，请排序
+    char s;
+    scanf("%c", &s);
+	getchar();
+	if (s == 'Y'){
+
+	}
+	else{
+		StraightInsertion(buf,n);
+	}
+	initscr();
+	move(2, 5);
+	for(int b=0;b<=n;b++){
+    		printw("%d", buf[b]);//在图形窗口输出字符串
+    		printw(" ");        
+    }     
+	refresh();
+    sleep(1);	
+	int low = 0;
+	int high = n;
+	int i=0;
+	while (low <= high){
+		int mid = (low + high) / 2;
+		clear();
+		move(2, 5);
+		for(int q=0;q<=n;q++){
+			printw("%d", buf[q]);//在图形窗口输出字符串
+			printw(" ");
+		}
+		int d=0;
+		int k;
+		int c=5;
+		while(d<mid){
+			k=buf[d];
+			while(k>0){
+				k=k/10;
+				c++;
+			}
+			c++;
+			d++;
+		}
+		move(1,c);
+		printw("%d", a);
+		refresh();
+		sleep(1);
+		if (a == buf[mid]){
+			i=1;
+			move(5, 5);
+			printw("Binary Search,Find success\n");
+			refresh();
+                        sleep(5);
+			break;
+		}
+		else if (a < buf[mid]){
+			high = mid-1;
+		}
+		else{
+			low = mid+1;
+		}
+	}
+	if(i==0){
+		move(5, 5);
+	        printw(" Binary Search, Find failure\n");
+	     	refresh();	
+                sleep(1);
+	}
+	sleep(2);
+	endwin(); 	    
 }
 int main()
 {
