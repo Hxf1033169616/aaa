@@ -5,7 +5,76 @@
 #include <stdlib.h>
 #include <time.h>
 #include "err_exit.h"
-void BubbleSort(int buf[],int n){
+void BubbleSort(int buf[],int n){//冒泡排序        
+        initscr();//创建一个图形窗口
+        refresh();//刷新图形窗口
+        move(2, 5);//将光标移到(5,2）的位置
+        for(int q=0;q<=n;q++){
+            printw("%d", buf[q]);//在图形窗口输出字符串
+            printw(" ");
+        }        
+        refresh();//刷新
+        sleep(1); //睡眠        
+        int m = n-1;
+        int flag = 1;                
+        while ((m > 0) && flag == 1){
+		flag = 0;
+		int j = 0;
+		while (j <= m){
+			if (buf[j] > buf[j + 1]){
+				flag = 1;
+				clear();//清除屏幕
+				move(2, 5);
+				int i=0;
+				while(i<j){
+					printw("%d",buf[i]);
+					printw(" ");
+					i++;
+				}
+				attron(A_UNDERLINE);//开启下划
+				printw("%d", buf[j]);
+				attroff(A_UNDERLINE);//关闭下划线                        
+                                printw(" ");
+                                attron(A_UNDERLINE);//开启下划线
+                                printw("%d", buf[j+1]);
+                                attroff(A_UNDERLINE);//关闭下划线
+				printw(" ");
+                                int k=j+2;
+                                while(k<=n){
+					printw("%d",buf[k]);
+					printw(" ");
+					k++;
+				}
+				refresh();
+				sleep(1);
+				int t = buf[j];
+				buf[j] = buf[j + 1];
+				buf[j + 1] = t;
+				clear();//清除屏幕
+				move(2, 5);                            
+                                for(int a=0;a<=n;a++){
+					printw("%d", buf[a]);//在图形窗口输出字符串
+					printw(" ");
+				}      
+                                refresh();
+                                sleep(1);
+			}
+			j+=1;
+		}
+		--m;
+	}
+	move(2, 5);
+	for(int b=0;b<=n;b++){
+		printw("%d", buf[b]);//在图形窗口输出字符串
+		printw(" ");
+	}
+	refresh();
+	sleep(1);
+	move(5,5);
+	printw( "BubbleSort, Sort success\n");//查找成功
+	refresh();
+	sleep(10);
+	endwin();//关闭图形窗口            
 }
 void SimpleSelection(int buf[],int n){
 }
